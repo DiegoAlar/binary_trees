@@ -27,6 +27,8 @@ const binary_tree_t *second)
 {
 	int dif = 0;
 
+	if (!first || !second)
+		return (NULL);
 	if (first && first->parent && second && second->parent)
 	{
 		if (first->parent == second)
@@ -40,11 +42,8 @@ const binary_tree_t *second)
 	else if (dif < 0)
 	{
 		dif *= -1;
-		while (dif)
-		{
+		while (dif--)
 			second = second->parent;
-			dif--;
-		}
 	}
 	else
 	{
