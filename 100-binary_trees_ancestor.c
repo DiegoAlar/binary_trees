@@ -54,6 +54,8 @@ const binary_tree_t *second)
 			dif--;
 		}
 	}
+	if (first == second)
+		return ((binary_tree_t *)first);
 	while (1)
 	{
 		first = first->parent;
