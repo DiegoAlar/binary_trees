@@ -31,13 +31,6 @@ const binary_tree_t *second)
 		return (NULL);
 	if (first == second)
 		return ((binary_tree_t *)first);
-	if (first && first->parent && second && second->parent)
-	{
-		if (first->parent == second)
-			return ((binary_tree_t *)second);
-		else if (second->parent == first)
-			return ((binary_tree_t *)first);
-	}
 	dif = (int)(binary_tree_depth(first) - (int)binary_tree_depth(second));
 	if (dif == 0)
 		return (first->parent);
@@ -49,20 +42,15 @@ const binary_tree_t *second)
 	}
 	else
 	{
-		while (dif)
-		{
+		while (dif--)
 			first = first->parent;
-			dif--;
-		}
 	}
 	if (first == second)
 		return ((binary_tree_t *)first);
-	while (1)
+	while (first != second)
 	{
 		first = first->parent;
 		second = second->parent;
-		if (first == second)
-			break;
 	}
 	return ((binary_tree_t *)first);
 }
