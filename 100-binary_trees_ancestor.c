@@ -34,9 +34,9 @@ const binary_tree_t *second)
 	}
 	if (binary_tree_depth(first) - binary_tree_depth(second) == 0)
 		return (first->parent);
-	else if ((int)(binary_tree_depth(first) - binary_tree_depth(second)) < 0)
+	else if ((int)(binary_tree_depth(first) - (int)binary_tree_depth(second)) < 0)
 		return (first->parent);
-	else if (binary_tree_depth(first) - binary_tree_depth(second) > 0)
+	else if ((int)binary_tree_depth(first) - (int)binary_tree_depth(second) > 0)
 		return (second->parent);
 	else
 		return (NULL);
