@@ -26,31 +26,33 @@ binary_tree_t *binary_trees_ancestor(const binary_tree_t *first,
 const binary_tree_t *second)
 {
 	int dif = 0;
+	binary_tree_t *f_cpy = (binary_tree_t *)first;
+	binary_tree_t *s_cpy = (binary_tree_t *)second;
 
 	if (!first || !second)
 		return (NULL);
 	if (first == second)
 		return ((binary_tree_t *)first);
-	dif = (int)(binary_tree_depth(first) - (int)binary_tree_depth(second));
+	dif = (int)(binary_tree_depth(f_cpy) - (int)binary_tree_depth(s_cpy));
 	if (dif == 0)
-		return (first->parent);
+		return (f_cpy->parent);
 	else if (dif < 0)
 	{
 		dif *= -1;
 		while (dif--)
-			second = second->parent;
+			s_cpy = s_cpy->parent;
 	}
 	else
 	{
 		while (dif--)
-			first = first->parent;
+			f_cpy = f_cpy->parent;
 	}
-	if (first == second)
-		return ((binary_tree_t *)first);
-	while (first != second)
+	if (f_cpy == s_cpy)
+		return ((binary_tree_t *)f_cpy);
+	while (f_cpy != s_cpy)
 	{
-		first = first->parent;
-		second = second->parent;
+		f_cpy = f_cpy->parent;
+		s_cpy = s_cpy->parent;
 	}
-	return ((binary_tree_t *)first);
+	return ((binary_tree_t *)f_cpy);
 }
