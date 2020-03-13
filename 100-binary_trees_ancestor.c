@@ -34,15 +34,13 @@ const binary_tree_t *second)
 	if (first == second)
 		return ((binary_tree_t *)first);
 	dif = (int)(binary_tree_depth(f_cpy) - (int)binary_tree_depth(s_cpy));
-	if (dif == 0)
-		return (f_cpy->parent);
-	else if (dif < 0)
+	if (dif < 0)
 	{
 		dif *= -1;
 		while (dif--)
 			s_cpy = s_cpy->parent;
 	}
-	else
+	else if (dif > 0)
 	{
 		while (dif--)
 			f_cpy = f_cpy->parent;
